@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blender Object Compiler | Text to 3D</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <div class="glass-container">
+        <header>
+            <h1>Blender <span class="accent">Compiler</span></h1>
+            <p class="subtitle">Natural Language to bpy Scripts</p>
+        </header>
+
+        <section class="settings-panel">
+            <details>
+                <summary>
+                    <span class="gear-icon">⚙️</span> Command Centre (Settings)
+                </summary>
+                <div class="settings-content">
+                    <div class="input-group">
+                        <label for="blender-path">Blender Path</label>
+                        <input type="text" id="blender-path" value="blender">
+                    </div>
+                    <div class="input-group">
+                        <label for="execution-mode">Execution Mode</label>
+                        <select id="execution-mode">
+                            <option value="local">Local PC Blender</option>
+                            <option value="cloud" disabled>Cloud Server</option>
+                        </select>
+                    </div>
+                    <div class="input-group checkbox">
+                        <label for="save-blend">Auto-Save .blend</label>
+                        <input type="checkbox" id="save-blend" checked>
+                    </div>
+                    <!-- Cinematic Overrides -->
+                    <div class="cinematic-settings">
+                        <div class="input-group">
+                            <label>Camera Dist</label>
+                            <input type="range" id="cam-dist" min="5" max="30" value="15">
+                        </div>
+                        <div class="input-group">
+                            <label>Cam Elev</label>
+                            <input type="range" id="cam-elev" min="1" max="15" value="8">
+                        </div>
+                        <div class="input-group">
+                            <label>Light</label>
+                            <input type="range" id="light-energy" min="100" max="5000" value="1000">
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </section>
+
+        <main>
+            <section class="input-area">
+                <div class="card main-card">
+                    <label class="section-label">DESCRIBE YOUR OBJECT</label>
+                    <textarea id="nl-input" placeholder="e.g. a tree..."></textarea>
+                    <button id="compile-btn" class="glow-button wide">Compile to DSL</button>
+                    <div class="header-actions-mini">
+                        <button id="reset-btn" class="text-button">New Project</button>
+                    </div>
+                </div>
+            </section>
+
+            <div class="output-grid">
+                <div class="card glass-card">
+                    <label class="section-label">GENERATED DSL</label>
+                    <div id="dsl-output" class="code-box">
+                        <code class="language-dsl">// DSL output will appear here</code>
+                    </div>
+                </div>
+
+                <div class="card glass-card">
+                    <label class="section-label">BLENDER PYTHON SCRIPT</label>
+                    <div id="script-output" class="code-box">
+                        <code class="language-python"># bpy script will appear here</code>
+                    </div>
+                    <div class="button-group">
+                        <button id="download-btn" class="secondary-button" disabled>Download .py</button>
+                        <button id="run-headless-btn" class="glow-button secondary" disabled>Run Headless</button>
+                    </div>
+                </div>
+
+                <div class="card glass-card console-card">
+                    <div class="card-header">
+                        <label class="section-label">EXECUTION OUTPUT</label>
+                        <button id="check-connection-btn" class="text-button">Check Connection</button>
+                    </div>
+                    <div id="console-output" class="code-box console">
+                        <code class="language-bash">// Blender logs will appear here...</code>
+                    </div>
+                </div>
+
+                <div class="card glass-card preview-card">
+                    <label class="section-label">VISUAL PREVIEW</label>
+                    <div id="preview-container" class="preview-box">
+                        <p class="placeholder-text">Rendered creation will appear here</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Ready for Production | Blender Compiler v1.2</p>
+        </footer>
+    </div>
+
+        <footer>
+            <p>Phase 1: Web App Bridge | Ready for Blender Add-on Port</p>
+        </footer>
+    </div>
+
+    <script src="parser.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

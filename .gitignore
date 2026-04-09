@@ -1,0 +1,9 @@
+node_modules/
+.DS_Store
+*.blend
+*.blend1
+render_preview.png
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
